@@ -9,8 +9,7 @@
     "preview": "vite preview",
     "eslint": "eslint src --ext .js,.vue,.ts,.jsx,.tsx --ignore-path .gitignore --fix",
     "prettier": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",
-    "prepare": "husky",
-    "lint-staged": "lint-staged"
+    "prepare": "husky"
   },
   "dependencies": {
     "vue": "^3.4.21"
