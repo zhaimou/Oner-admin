@@ -1,12 +1,12 @@
 import { PersistedStateOptions } from 'pinia-plugin-persistedstate'
 
-export function piniaPersistConfig(name: string, paths?: string[]) {
+const piniaPersistConfig = (key: string, paths?: string[]) => {
   const persist: PersistedStateOptions = {
-    key: name,
+    key,
     storage: localStorage,
     paths,
   }
-
   return persist
 }
+
 export default piniaPersistConfig
