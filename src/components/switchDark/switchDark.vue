@@ -7,8 +7,7 @@
   />
 </template>
 <!-- @change="changeDark" -->
-<script setup lang="ts" name="stwich">
-// import { ref } from 'vue'
+<script setup lang="ts" name="SwitchDark">
 import { Sunny, Moon } from '@element-plus/icons-vue'
 import { useGlobalConfig } from '@/stores/modules/global.ts'
 const global = useGlobalConfig()
