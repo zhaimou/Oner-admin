@@ -2,7 +2,7 @@ import { RouteRecordRaw } from 'vue-router'
 export const staticRoutes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/Main',
+    redirect: '/main',
   },
   {
     path: '/login',
@@ -14,6 +14,11 @@ export const staticRoutes: RouteRecordRaw[] = [
     name: 'layout',
     component: () => import('@/views/layout/layout.vue'),
   },
+  //   {
+  //     path:'/main',
+  //     name:'main',
+  //     coomponent
+  //   }
 ]
 
 export const errorRoutes: RouteRecordRaw[] = [
