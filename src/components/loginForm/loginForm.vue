@@ -46,7 +46,7 @@
       <el-form-item>
         <el-button
           icon="UserFilled"
-          @click="loginAccount()"
+          @click="loginAccount(ruleFormRef)"
           round
           size="large"
           type="primary"
@@ -61,8 +61,13 @@
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 import { useRouter } from 'vue-router'
+import { loginApi } from '@/api/modules/login'
+import { useUserStore } from '@/stores/modules/user'
+import { initDynamicRouter } from '@/router/modules/dynamicRouter'
+import md5 from 'md5'
 const ruleFormRef = ref<FormInstance>()
-
+const userStore = useUserStore()
+// useUserStore
 const loginForm = reactive({
   username: '',
   password: '',
@@ -84,8 +89,27 @@ const resetForm = (formEl: FormInstance | undefined) => {
   formEl.resetFields()
 }
 const router = useRouter()
-const loginAccount = () => {
-  router.push('/main')
+const loginAccount = (formEl: FormInstance | undefined) => {
+  if (!formEl) return
+  formEl.validate(async (valid) => {
+    if (!valid) return
+    // loading.value = true;
+    try {
+      // 1.执行登录接口
+      const { data } = await loginApi({
+        ...loginForm,
+        password: md5(loginForm.password),
+      })
+      userStore.setToken(data.access_token)
+
+      // 2.添加动态路由
+      await initDynamicRouter()
+
+      router.push('/main')
+    } catch (err) {
+      console.log(err)
+    }
+  })
 }
 </script>
 <style scope lang="scss">

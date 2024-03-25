@@ -1,6 +1,6 @@
 import { ElMessage } from 'element-plus'
 
-export function getLightColor(color: string, leval: number) {
+export function getLightColor(color: string, leval?: number) {
   const reg = /^#?[0-9a-fA-F]{6}$/
   if (!reg.test(color)) {
     return ElMessage.warning('输入错误的hex颜色值')
