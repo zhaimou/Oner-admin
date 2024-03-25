@@ -19,6 +19,6 @@ declare module 'vue' {
     LoginForm: (typeof import('./src/components/loginForm/loginForm.vue'))['default']
     RouterLink: (typeof import('vue-router'))['RouterLink']
     RouterView: (typeof import('vue-router'))['RouterView']
-    SwitchDark: (typeof import('./src/components/stwitchDark/switchDark.vue'))['default']
+    SwitchDark: (typeof import('./src/components/switchDark/switchDark.vue'))['default']
   }
 }
