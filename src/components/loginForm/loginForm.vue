@@ -65,6 +65,9 @@ import { loginApi } from '@/api/modules/login'
 import { useUserStore } from '@/stores/modules/user'
 import { initDynamicRouter } from '@/router/modules/dynamicRouter'
 import md5 from 'md5'
+import { HOME_URL } from '@/config'
+import { ElNotification } from 'element-plus'
+import { getTimeState } from '@/utils'
 const ruleFormRef = ref<FormInstance>()
 const userStore = useUserStore()
 // useUserStore
@@ -105,7 +108,14 @@ const loginAccount = (formEl: FormInstance | undefined) => {
       // 2.添加动态路由
       await initDynamicRouter()
 
-      router.push('/main')
+      router.push(HOME_URL)
+
+      ElNotification({
+        title: getTimeState(),
+        message: '欢迎登录 Oner-Admin',
+        type: 'success',
+        duration: 3000,
+      })
     } catch (err) {
       console.log(err)
     }

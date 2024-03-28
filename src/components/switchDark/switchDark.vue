@@ -9,7 +9,7 @@
 <!-- @change="changeDark" -->
 <script setup lang="ts" name="SwitchDark">
 import { Sunny, Moon } from '@element-plus/icons-vue'
-import { useGlobalConfig } from '@/stores/modules/global.ts'
-const global = useGlobalConfig()
+import { useGlobalStore } from '@/stores/modules/global.ts'
+const global = useGlobalStore()
 </script>
 <style lang="scss" scope></style>

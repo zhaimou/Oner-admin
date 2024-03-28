@@ -9,7 +9,7 @@ export default defineConfig({
   resolve: {
     //设置别名
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      '@': path.resolve(__dirname, './src'),
     },
   },
   plugins: [
@@ -21,4 +21,11 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/style/var.scss";`,
+      },
+    },
+  },
 })

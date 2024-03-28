@@ -1,18 +1,21 @@
+import { HOME_URL } from '@/config'
 import { RouteRecordRaw } from 'vue-router'
 export const staticRoutes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/main',
+    redirect: HOME_URL,
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/login/login.vue'),
+    component: () => import('@/views/login/index.vue'),
   },
   {
     path: '/layout',
     name: 'layout',
-    component: () => import('@/views/layout/layout.vue'),
+    component: () => import('@/layout/index.vue'),
+    // redirect: HOME_URL,
+    children: [],
   },
   //   {
   //     path:'/main',

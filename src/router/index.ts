@@ -6,6 +6,7 @@ export const router = createRouter({
   routes: [...staticRoutes, ...errorRoutes],
   strict: false,
   // scrollBehavior: () => ({ left: 0, top: 0 })
+  //   redirect: HOME_URL,
 })
 
 // router.beforeEach((to, from, next)=>{

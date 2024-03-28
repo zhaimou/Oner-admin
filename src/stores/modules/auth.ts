@@ -37,6 +37,7 @@ export const useAuthStore = defineStore('Oner-auth', {
     // Get AuthMenuList
     async getAuthMenuList() {
       const { data } = await getAuthMenuListApi()
+      console.log(data)
       this.authMenuList = data
     },
     // Set RouteName
