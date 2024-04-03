@@ -29,18 +29,15 @@ export const useAuthStore = defineStore('Oner-auth', {
     breadcrumbListGet: (state) => getAllBreadcrumbList(state.authMenuList),
   },
   actions: {
-    // Get AuthButtonList
     async getAuthButtonList() {
       const { data } = await getAuthButtonListApi()
       this.authButtonList = data
     },
-    // Get AuthMenuList
     async getAuthMenuList() {
       const { data } = await getAuthMenuListApi()
       console.log(data)
       this.authMenuList = data
     },
-    // Set RouteName
     async setRouteName(name: string) {
       this.routeName = name
     },

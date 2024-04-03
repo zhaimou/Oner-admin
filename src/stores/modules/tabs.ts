@@ -1,4 +1,4 @@
-import { router } from '@/router'
+import router from '@/router'
 import { defineStore } from 'pinia'
 import { TabsState, TabsMenuProps } from '@/stores/interface'
 import { useKeepAliveStore } from './keepAlive'

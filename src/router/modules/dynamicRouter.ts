@@ -1,6 +1,6 @@
 import { useAuthStore } from '@/stores/modules/auth.ts'
 import { RouteRecordRaw } from 'vue-router'
-import { router } from '@/router/index.ts'
+import router from '@/router/index.ts'
 
 // import { useUserStore} from "@/stores/modules/uesr";
 

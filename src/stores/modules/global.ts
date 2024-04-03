@@ -8,6 +8,8 @@ export const useGlobalStore = defineStore('oner-global', {
     isDark: false,
     primary: '#009688',
     isCollapse: false,
+    isWeak: false,
+    isGrey: false,
     accordion: true,
     breadcrumb: true,
     breadcrumbIcon: true,
@@ -15,6 +17,10 @@ export const useGlobalStore = defineStore('oner-global', {
     layout: 'vertical',
     tabs: true,
     footer: true,
+    // 侧边栏反转
+    asideInverted: false,
+    // 头部反转
+    headerInverted: false,
   }),
   //相当于
   // state: () => {

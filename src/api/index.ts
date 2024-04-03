@@ -11,7 +11,7 @@ import { ResultEnum } from '@/enums/httpEnum'
 // import { checkStatus } from "./helper/checkStatus";
 // import { AxiosCanceler } from "./helper/axiosCancel";
 import { useUserStore } from '@/stores/modules/user'
-import { router } from '@/router'
+import router from '@/router'
 export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
   loading?: boolean
   cancel?: boolean
@@ -19,6 +19,7 @@ export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
 
 const config = {
   // 默认地址请求地址，可在 .env.** 文件中修改
+  //   https://mock.mengxuegu.com/mock/629d727e6163854a32e8307e
   baseURL: 'https://mock.mengxuegu.com/mock/629d727e6163854a32e8307e',
   // 设置超时时间
   timeout: ResultEnum.TIMEOUT as number,

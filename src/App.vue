@@ -3,8 +3,12 @@
 </template>
 
 <script setup lang="ts">
-// import { useI18n } from "vue-i18n";
+import { useTheme } from '@/hook/useTheme'
+const { initTheme } = useTheme()
+initTheme()
+
 import { RouterView } from 'vue-router'
+
 // const I18n = useI18n()
 </script>
 

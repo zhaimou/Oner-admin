@@ -1,11 +1,24 @@
 import { DEFAULT_PRIMARY } from '@/config'
-import { useGlobalConfig } from '../stores/modules/global'
+import { useGlobalStore } from '../stores/modules/global'
 import { storeToRefs } from 'pinia'
 import { ElMessage } from 'element-plus'
-// import { getLightColor } from '@/utils/ color';
+import { getLightColor, getDarkColor } from '@/utils/color'
+import { GreyOrWeakType, ThemeType } from './interface'
+import { menuTheme } from '@/style/theme/menu'
+import { asideTheme } from '@/style/theme/aside'
+import { headerTheme } from '@/style/theme/header'
+
 export const useTheme = () => {
-  const globalConfig = useGlobalConfig()
-  const { isDark, primary } = storeToRefs(globalConfig)
+  const globalStore = useGlobalStore()
+  const {
+    isGrey,
+    isWeak,
+    isDark,
+    primary,
+    layout,
+    asideInverted,
+    headerInverted,
+  } = storeToRefs(globalStore)
   const switchDark = () => {
     const html = document.documentElement as HTMLElement
     if (isDark.value) html.setAttribute('class', 'dark')
@@ -21,13 +34,83 @@ export const useTheme = () => {
         })
     }
     document.documentElement.style.setProperty('el-primary-color', val)
-    // document.documentElement.style.setProperty(
-    //     "--el-color-primary-dark-2",
-    //     isDark.value ? `${getLightColor(val, 0.2)}` : `${getDarkColor(val, 0.3)}`
-    //   );
+    document.documentElement.style.setProperty(
+      '--el-color-primary-dark-2',
+      isDark.value ? `${getLightColor(val, 0.2)}` : `${getDarkColor(val, 0.3)}`
+    )
+    for (let i = 1; i <= 9; i++) {
+      const primaryColor = isDark.value
+        ? `${getDarkColor(val, i / 10)}`
+        : `${getLightColor(val, i / 10)}`
+      document.documentElement.style.setProperty(
+        `--el-color-primary-light-${i}`,
+        primaryColor
+      )
+    }
+    globalStore.setGlobalState('primary', val)
+  }
+
+  // 灰色和弱色切换
+  const changeGreyOrWeak = (type: GreyOrWeakType, value: boolean) => {
+    const body = document.body as HTMLElement
+    if (!value) return body.removeAttribute('style')
+    const styles: Record<GreyOrWeakType, string> = {
+      grey: 'filter: grayscale(1)',
+      weak: 'filter: invert(80%)',
+    }
+    body.setAttribute('style', styles[type])
+    const propName = type === 'grey' ? 'isWeak' : 'isGrey'
+    globalStore.setGlobalState(propName, false)
+  }
+
+  // 设置菜单样式
+  const setMenuTheme = () => {
+    let type: ThemeType = 'light'
+    if (layout.value === 'transverse' && headerInverted.value) type = 'inverted'
+    if (layout.value !== 'transverse' && asideInverted.value) type = 'inverted'
+    if (isDark.value) type = 'dark'
+    const theme = menuTheme[type!]
+    for (const [key, value] of Object.entries(theme)) {
+      document.documentElement.style.setProperty(key, value)
+    }
+  }
+
+  // 设置侧边栏样式
+  const setAsideTheme = () => {
+    let type: ThemeType = 'light'
+    if (asideInverted.value) type = 'inverted'
+    if (isDark.value) type = 'dark'
+    const theme = asideTheme[type!]
+    for (const [key, value] of Object.entries(theme)) {
+      document.documentElement.style.setProperty(key, value)
+    }
+    setMenuTheme()
+  }
+
+  // 设置头部样式
+  const setHeaderTheme = () => {
+    let type: ThemeType = 'light'
+    if (headerInverted.value) type = 'inverted'
+    if (isDark.value) type = 'dark'
+    const theme = headerTheme[type!]
+    for (const [key, value] of Object.entries(theme)) {
+      document.documentElement.style.setProperty(key, value)
+    }
+    setMenuTheme()
+  }
+
+  // init theme
+  const initTheme = () => {
+    switchDark()
+    if (isGrey.value) changeGreyOrWeak('grey', true)
+    if (isWeak.value) changeGreyOrWeak('weak', true)
   }
   return {
+    initTheme,
     switchDark,
     changePrimary,
+    changeGreyOrWeak,
+    setAsideTheme,
+    setHeaderTheme,
   }
 }
