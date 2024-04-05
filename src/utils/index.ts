@@ -1,6 +1,5 @@
 import { FieldNamesProps } from '@/components/proTable/interface'
 import { MenuOptions } from '@/types/global'
-
 /**
  * @description 使用递归扁平化菜单，方便添加动态路由
  * @param {Array} menuList 菜单列表
@@ -136,4 +135,21 @@ export function generateUUID() {
     uuid += (i === 12 ? 4 : i === 16 ? (random & 3) | 8 : random).toString(16)
   }
   return uuid
+}
+// interface MyURL{
+//     hash?: string;
+//     history?: string;
+// }
+// 元素隐式具有 "any" 类型，因为类型为 "any" 的表达式不能用于索引类型 "{ hash: string; history: string; }"。ts(7053)
+// type mode = {
+//     hash,
+//     history,
+// }
+const mode: 'hash' | 'history' = import.meta.env.VITE_ROUTER_MODE
+export function getUrlWithParams() {
+  const url = {
+    hash: location.hash.substring(1),
+    history: location.pathname + location.search,
+  }
+  return url[mode]
 }

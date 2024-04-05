@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import { TabsState, TabsMenuProps } from '@/stores/interface'
 import { useKeepAliveStore } from './keepAlive'
 import piniaPersistConfig from '@/config/piniaPersistConfig'
+import { getUrlWithParams } from '@/utils'
 
 const keepAliveStore = useKeepAliveStore()
 export const useTabsStore = defineStore('oner-tabs', {
@@ -43,6 +44,46 @@ export const useTabsStore = defineStore('oner-tabs', {
     },
     async setTabs(tabsMenuList: TabsMenuProps[]) {
       this.tabsMenuList = tabsMenuList
+    },
+    // Close Tabs On Side
+    async closeTabsOnSide(path: string, type: 'left' | 'right') {
+      const currentIndex = this.tabsMenuList.findIndex(
+        (item) => item.path === path
+      )
+      if (currentIndex !== -1) {
+        const range =
+          type === 'left'
+            ? [0, currentIndex]
+            : [currentIndex + 1, this.tabsMenuList.length]
+        this.tabsMenuList = this.tabsMenuList.filter((item, index) => {
+          return index < range[0] || index >= range[1] || !item.close
+        })
+      }
+      // set keepalive
+      const KeepAliveList = this.tabsMenuList.filter((item) => item.isKeepAlive)
+      if (KeepAliveList) {
+        keepAliveStore.setKeepAliveName(
+          KeepAliveList.map((item) => item.path) as string[]
+        )
+      }
+    },
+    // Close MultipleTab
+    async closeMultipleTab(tabsMenuValue?: string) {
+      this.tabsMenuList = this.tabsMenuList.filter((item) => {
+        return item.path === tabsMenuValue || !item.close
+      })
+      // set keepalive
+      const KeepAliveList = this.tabsMenuList.filter((item) => item.isKeepAlive)
+      if (KeepAliveList) {
+        keepAliveStore.setKeepAliveName(
+          KeepAliveList.map((item) => item.path) as string[]
+        )
+      }
+    },
+    async setTabsTitle(title: string) {
+      this.tabsMenuList.forEach((item) => {
+        if (item.path == getUrlWithParams()) item.title = title
+      })
     },
   },
   persist: piniaPersistConfig('oner-tabs'),
