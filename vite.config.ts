@@ -11,7 +11,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 // import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import pkg from './package.json'
 import dayjs from 'dayjs'
-
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 const { dependencies, devDependencies, name, version } = pkg
 const __APP_INFO__ = {
   pkg: { dependencies, devDependencies, name, version },
@@ -44,6 +44,12 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     vueJsx(),
+    createSvgIconsPlugin({
+      // 指定需要缓存的图标文件夹
+      iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
+      // 指定symbolId格式
+      symbolId: 'icon-[dir]-[name]',
+    }),
   ],
   css: {
     preprocessorOptions: {

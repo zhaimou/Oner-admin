@@ -18,6 +18,7 @@ export interface MetaProps {
   isAffix: boolean
   isKeepAlive: boolean
 }
+
 // declare namespace File {
 export type ImageMimeType =
   | 'image/apng'
@@ -34,7 +35,8 @@ export type ImageMimeType =
 export type ExcelMimeType =
   | 'application/vnd.ms-excel'
   | 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-//   }
+
+// }
 
 // }
 

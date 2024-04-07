@@ -32,6 +32,7 @@ declare module 'vue' {
     ElDropdown: (typeof import('element-plus/es'))['ElDropdown']
     ElDropdownItem: (typeof import('element-plus/es'))['ElDropdownItem']
     ElDropdownMenu: (typeof import('element-plus/es'))['ElDropdownMenu']
+    ElEmpty: (typeof import('element-plus/es'))['ElEmpty']
     ElFooter: (typeof import('element-plus/es'))['ElFooter']
     ElForm: (typeof import('element-plus/es'))['ElForm']
     ElFormItem: (typeof import('element-plus/es'))['ElFormItem']
@@ -75,8 +76,13 @@ declare module 'vue' {
     RouterView: (typeof import('vue-router'))['RouterView']
     SearchForm: (typeof import('./src/components/searchForm/index.vue'))['default']
     SearchFormItem: (typeof import('./src/components/searchForm/component/SearchFormItem.vue'))['default']
+    SelectFilter: (typeof import('./src/components/selectFilter/index.vue'))['default']
+    SelectIcon: (typeof import('./src/components/selectIcon/index.vue'))['default']
+    SvgIcon: (typeof import('./src/components/svgIcon/index.vue'))['default']
     SwitchDark: (typeof import('./src/components/switchDark/switchDark.vue'))['default']
     TableCloumn: (typeof import('./src/components/proTable/components/tableCloumn.vue'))['default']
     TableColumn: (typeof import('./src/components/proTable/components/TableColumn.vue'))['default']
+    TreeFilter: (typeof import('./src/components/treeFilter/index.vue'))['default']
+    WangEditor: (typeof import('./src/components/wangEditor/index.vue'))['default']
   }
 }

@@ -17,7 +17,7 @@ import '@/style/element-dark.scss'
 
 import '@/style/element.scss'
 
-// import "virtual:svg-icons-register";
+import 'virtual:svg-icons-register'
 import ElementPlus from 'element-plus'
 import directives from '@/directives/index'
 import * as Icons from '@element-plus/icons-vue'
