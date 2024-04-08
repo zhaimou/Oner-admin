@@ -86,12 +86,14 @@
       </template>
     </ProTable>
     <UserDrawer ref="drawerRef" />
+    <ImportExcel ref="dialogRef" />
   </div>
 </template>
 
 <script setup lang="tsx">
 import ProTable from '@/components/proTable/index.vue'
 import UserDrawer from '@/views/proTable/components/UserDrawer.vue'
+import ImportExcel from '@/components/importExcel/index.vue'
 import { useDownload } from '@/hook/useDownload'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import {
