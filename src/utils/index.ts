@@ -153,3 +153,7 @@ export function getUrlWithParams() {
   }
   return url[mode]
 }
+export function randomNum(min: number, max: number): number {
+  const num = Math.floor(Math.random() * (min - max) + max)
+  return num
+}
