@@ -6,6 +6,8 @@ export interface UserState {
     name: string
     age?: number
   }
+  userVerify?: string
+  currentPage?: number
 }
 // export interface
 export interface AuthState {

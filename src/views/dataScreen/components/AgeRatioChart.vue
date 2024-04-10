@@ -14,7 +14,6 @@ interface ChartProp {
   name: string
   percentage: string
 }
-
 let data: ChartProp[] = [
   { value: 200, name: '10岁以下', percentage: '16%' },
   { value: 110, name: '10 - 18岁', percentage: '8%' },
@@ -23,7 +22,6 @@ let data: ChartProp[] = [
   { value: 250, name: '40 - 60岁', percentage: '20%' },
   { value: 260, name: '60岁以上', percentage: '20%' },
 ]
-
 const colors = [
   '#F6C95C',
   '#EF7D33',
@@ -32,7 +30,6 @@ const colors = [
   '#81C8EF',
   '#9270CA',
 ]
-
 const option: ECOption = {
   color: colors,
   tooltip: {

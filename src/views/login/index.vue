@@ -75,12 +75,18 @@ import LoginForm from '@/components/loginForm/loginForm.vue'
           height: 52px;
         }
         .logo-text {
-          padding: 0 0 0 25px;
+          //   text-transform: uppercase;
+          padding: 0 0 0 15px;
           margin: 0;
           font-size: 42px;
           font-weight: bold;
           color: #34495e;
+          //   color: #999;
           white-space: nowrap;
+          font:
+            bold 200% Consolas,
+            Monaco,
+            monospace;
         }
       }
       .el-form-item {

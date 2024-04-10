@@ -8,7 +8,6 @@
 <script setup lang="ts">
 import ECharts from '@/components/eCharts/index.vue'
 import { ECOption } from '@/components/eCharts/config'
-
 interface ChartProp {
   label: string
   value: string[]
