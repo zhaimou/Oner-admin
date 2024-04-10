@@ -23,12 +23,18 @@ import directives from '@/directives/index'
 import * as Icons from '@element-plus/icons-vue'
 
 import router from '@/router/index.ts'
-
+import I18n from '@/languages/index'
 import pinia from '@/stores'
 // import "element-plus/dist/index.css";
 const app = createApp(App)
 Object.keys(Icons).map((key) => {
   app.component(key, Icons[key as keyof typeof Icons])
 })
-app.use(ElementPlus).use(directives).use(router).use(pinia).mount('#app')
+app
+  .use(ElementPlus)
+  .use(directives)
+  .use(I18n)
+  .use(router)
+  .use(pinia)
+  .mount('#app')
 // iconfont css

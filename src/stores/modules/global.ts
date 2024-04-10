@@ -4,6 +4,8 @@ import piniaPersistConfig from '@/config/piniaPersistConfig'
 import { GlobalState } from '../interface'
 export const useGlobalStore = defineStore('oner-global', {
   state: (): GlobalState => ({
+    language: null,
+    assemblySize: 'default',
     tabsIcon: true,
     isDark: false,
     primary: '#009688',

@@ -1,5 +1,7 @@
 import { MenuOptions } from '@/types/global'
 export type LayoutType = 'vertical' | 'classic' | 'transverse' | 'columns'
+export type AssemblySizeType = 'large' | 'small' | 'default'
+export type LanguageType = 'zh' | 'en' | null
 export interface UserState {
   token: string
   userInfo: {
@@ -19,8 +21,8 @@ export interface AuthState {
 }
 export interface GlobalState {
   layout: LayoutType
-  // assemblySize: AssemblySizeType;
-  // language: LanguageType;
+  assemblySize: AssemblySizeType
+  language: LanguageType
   maximize: boolean
   primary: string
   isDark: boolean

@@ -1,4 +1,9 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import {
+  createRouter,
+  createWebHashHistory,
+  createWebHistory,
+  createMemoryHistory,
+} from 'vue-router'
 import { staticRoutes, errorRoutes } from './modules/staticRouters'
 import { useUserStore } from '@/stores/modules/user'
 import NProgress from '@/config/nprogress'

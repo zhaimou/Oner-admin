@@ -23,6 +23,7 @@ export default defineConfig({
     //设置别名
     alias: {
       '@': path.resolve(__dirname, './src'),
+      'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js',
     },
   },
   define: {

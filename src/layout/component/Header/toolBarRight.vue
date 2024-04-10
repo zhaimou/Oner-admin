@@ -3,6 +3,9 @@
     <div class="header-icon">
       <SearchMenu id="searchMenu" />
       <Message id="message" />
+      <Fullscreen id="Fullscreen" />
+      <AssemblySize id="AssemblySize" />
+      <Language id="Language" />
     </div>
     <span class="username">{{ username }}</span>
     <Avatar />
@@ -10,11 +13,14 @@
 </template>
 
 <script setup lang="ts">
+import Fullscreen from './components/Fullscreen.vue'
 import { computed } from 'vue'
 import { useUserStore } from '@/stores/modules/user'
 import Avatar from './components/Avatar.vue'
 import Message from './components/Message.vue'
 import SearchMenu from './components/SearchMenu.vue'
+import AssemblySize from './components/AssemblySize.vue'
+import Language from './components/Language.vue'
 const UserStore = useUserStore()
 const username = computed(() => UserStore.userInfo.name)
 </script>

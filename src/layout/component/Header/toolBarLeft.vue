@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import { useGlobalStore } from '../../../stores/modules/global'
 import CollapseIcon from './components/CollapseIcon.vue'
-import Breadcrumb from '../Header/components/Breadcrumb.vue'
+import Breadcrumb from './components/Breadcrumb.vue'
 const globalStore = useGlobalStore()
 // globalStore.setGlobaState()
 // const changeCollapse = () => globalStore.setGlobalState("isCollapse", !globalStore.isCollapse);
