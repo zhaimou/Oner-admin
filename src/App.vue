@@ -23,9 +23,14 @@ import { computed, onMounted, reactive } from 'vue'
 import { LanguageType } from './stores/interface'
 import en from 'element-plus/es/locale/lang/en'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
+// import { initDynamicRouter } from './router/modules/dynamicRouter'
+// import router from './router'
 
 const i18n = useI18n()
-onMounted(() => {
+onMounted(async () => {
+  //   await initDynamicRouter()
+  //   console.log(router.options.history.location)
+  //   router.replace(router.options.history.location);
   const language = globalStore.language ?? getBrowserLang()
   i18n.locale.value = language
   globalStore.setGlobalState('language', language as LanguageType)

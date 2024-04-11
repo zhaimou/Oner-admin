@@ -34,7 +34,7 @@ app
   .use(ElementPlus)
   .use(directives)
   .use(I18n)
-  .use(router)
   .use(pinia)
+  .use(router)
   .mount('#app')
 // iconfont css

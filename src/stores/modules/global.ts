@@ -57,3 +57,9 @@ export const useGlobalStore = defineStore('oner-global', {
 // type ObjToKeyValArray<T> = {
 //     [K in keyof T]: [K, T[K]];
 //   }[keyof T];
+// persist: {
+//     async beforeRestore(context) {
+//         await context.store.ReqRouter();
+//         router.replace(router.options.history.location);
+//       }
+//     }

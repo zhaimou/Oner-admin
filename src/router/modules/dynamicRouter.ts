@@ -10,18 +10,12 @@ export const initDynamicRouter = async () => {
   const authStore = useAuthStore()
   try {
     await authStore.getAuthMenuList()
-
     await authStore.getAuthButtonList()
-
-    // if(authStore.authMenuListGet.length === 0){
-
-    // }
     // console.log(authStore.flatMenuListGet)
     authStore.flatMenuListGet.map((item) => {
       item.children && delete item.children
       if (item.component && typeof item.component == 'string') {
         item.component = modules['/src/views' + item.component + '.vue']
-        // console.log(modules)
       }
       if (item.meta.isFull) {
         router.addRoute(item as unknown as RouteRecordRaw)
